@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonPortfolio - Cybersécurité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1d2e 0%, #0f1419 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .shield-icon {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #00ff9d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff9d;
+        }
+
+        .logo span {
+            color: #00ff9d;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #00ff9d;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background grid */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating orbs */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, transparent 70%);
+            top: 20%;
+            left: -10%;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, 50px) scale(1.1); }
+        }
+
+        .orb-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            top: 60%;
+            right: -5%;
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        .nc-badge {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 255, 157, 0.4);
+            position: relative;
+            z-index: 1;
+            animation: badgePulse 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { 
+                transform: translateY(0) rotateY(0deg);
+                box-shadow: 0 20px 60px rgba(0, 255, 157, 0.4);
+            }
+            50% { 
+                transform: translateY(-10px) rotateY(5deg);
+                box-shadow: 0 30px 80px rgba(0, 255, 157, 0.6);
+            }
+        }
+
+        .nc-badge::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #00ff9d, #00d4ff, #667eea, #00ff9d);
+            border-radius: 30px;
+            z-index: -1;
+            animation: rotateBorder 3s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nc-badge span {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 800;
+            letter-spacing: -2px;
+            animation: titleReveal 1s ease-out;
+        }
+
+        @keyframes titleReveal {
+            0% { 
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        .hero h1 .cyber {
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .cyber::after {
+            content: 'Cyber';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: -1;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+                opacity: 0;
+            }
+            92% {
+                transform: translate(-2px, 2px);
+                opacity: 0.8;
+            }
+            94% {
+                transform: translate(2px, -2px);
+                opacity: 0.8;
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #d0d0d0;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            max-width: 600px;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            border: none;
+            color: #1a1d2e;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 255, 157, 0.5);
+        }
+
+        .cta-button span {
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover span {
+            transform: translateX(5px);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #00ff9d;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #00ff9d;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        #apropos {
+            margin-top: 250px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .about-text h3 {
+            color: #00ff9d;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-top: 80px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff9d;
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.2);
+        }
+
+        .expertise-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .expertise-card h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .expertise-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 157, 0.2);
+            border-color: #00ff9d;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffd700;
+            color: #000;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-content p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-features {
+            margin: 1.5rem 0;
+            flex: 1;
+        }
+
+        .project-features h4 {
+            color: #00ff9d;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .project-features li {
+            color: #d0d0d0;
+            font-size: 0.85rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff9d;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #00ff9d;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 25px;
+            background: rgba(0, 255, 157, 0.05);
+            flex: 1;
+            text-align: center;
+        }
+
+        .project-link:hover {
+            background: rgba(0, 255, 157, 0.15);
+            border-color: #00ff9d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
+        }
+
+        .project-link.primary {
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            color: #1a1d2e;
+            border: none;
+            font-weight: 600;
+        }
+
+        .project-link.primary:hover {
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.4);
+        }
+
+        /* Certifications Section */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .goal-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            text-align: center;
+        }
+
+        .goal-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .goal-card h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .goal-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff9d;
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.2);
+        }
+
+        .cert-image {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cert-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-status {
+            color: #00ff9d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .cert-provider {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff9d;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .cert-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff9d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-method:hover {
+            border-color: #00ff9d;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-icon.linkedin {
+            background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+        }
+
+        .contact-icon.github {
+            background: linear-gradient(135deg, #333 0%, #666 100%);
+        }
+
+        .contact-icon.email {
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+        }
+
+        .contact-info h4 {
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .info-text h5 {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+            font-weight: normal;
+        }
+
+        .info-text p {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .domains {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .domain-tag {
+            background: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .cta-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-box h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #00ff9d;
+            color: #1a1d2e;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .message-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 29, 46, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 157, 0.1);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .shield-icon {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal/Lightbox pour les certifications */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeInModal 0.3s ease;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0, 255, 157, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 255, 157, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #00ff9d;
+            color: #1a1d2e;
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #00ff9d;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid, .goals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="shield-icon">🛡️</div>
+            <span>Mon</span>Portfolio - Chaker Nabil
+        </div>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="nc-badge">
+            <span>NC</span>
+        </div>
+        <h1><span class="cyber">Cyber</span>Sécurité</h1>
+        <p>Protéger le numérique, un processus sans fin.</p>
+        <a href="#apropos" class="cta-button">
+            🎓 Étudiant BUT RT - Spécialité Cybersécurité
+            <span>↓</span>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos">
+        <h2 class="section-title">À propos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Mon Parcours</h3>
+                <p>Étudiant en 3e année de BUT Réseaux & Télécommunications avec une spécialisation en cybersécurité, je suis passionné par la protection des systèmes réseaux et l'innovation technologique.</p>
+                <p>Mon expertise se concentre sur l'intersection entre le domaine réseau, le cloud et la sécurité informatique, explorant comment les technologies émergentes peuvent renforcer nos défenses numériques.</p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">🛡️</div>
+                    <h4>Sécurité Réseau</h4>
+                    <p>Protection des infrastructures et analyse des vulnérabilités</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🤖</div>
+                    <h4>IA & Sécurité</h4>
+                    <p>Intelligence artificielle appliquée à la cybersécurité</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">💻</div>
+                    <h4>Développement Sécurisé</h4>
+                    <p>Programmation avec focus sur la sécurité</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔐</div>
+                    <h4>Pentesting</h4>
+                    <p>Tests d'intrusion et audit de sécurité</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets">
+        <h2 class="section-title">Projets</h2>
+        <p class="section-subtitle">Découvrez mes projets en réseau et cybersécurité alliant technologique et protection des systèmes.</p>
+
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('SécurisationdunSI(SAÉ).png'); background-size: cover; background-position: center;">
+                    <span class="project-badge">🛡️ Infrastructure Security</span>
+                </div>
+                <div class="project-content">
+                    <h3>Sécurisation d'un SI (SAÉ)</h3>
+                    <p>Mise en place d'une infrastructure et d'un processus de sécurisation d'un système d'information (tests d'intrusion, segmentation réseau, surveillance) avec preuves d'exploitation et résultats de scans.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Architecture réseau segmentée (LAN / DMZ / WAN) et plan IP détaillé.</li>
+                            <li>Tests d'intrusion / pentests : captures Wi-Fi (WEP/WPA), scans Nuxus, Nmap, Zenmap.</li>
+                            <li>Déploiement et configuration de pare-feu (Stormshield) et règles de filtrage.</li>
+                            <li>Gestion des accès : intégration AD / SSO et contrôle d'objets de groupe.</li>
+                            <li>Collecte de logs & forensic (captures handshake, sorties d'outils) pour traçabilité.</li>
+                            <li>Recommandations d'amélioration et priorisation des corrections.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Stormshield</span>
+                        <span class="tech-tag">Wireshark</span>
+                        <span class="tech-tag">Nuxus</span>
+                        <span class="tech-tag">Nmap</span>
+                        <span class="tech-tag">Active Directory</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Synthèse technique</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1if9eqJnb0vE0mf-YnvH7hBcBzetEaz-n" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('Architecture Cloud pour IA.png'); background-size: cover; background-position: center;">
+                    <span class="project-badge">☁️ Cloud & AI Security</span>
+                </div>
+                <div class="project-content">
+                    <h3>Architecture Cloud pour IA</h3>
+                    <p>Mise en place d'une architecture cloud résiliente et sécurisée pour héberger des modèles d'apprentissage automatique.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Conteneurisation avec Docker</li>
+                            <li>Monitoring avancé et alertes</li>
+                            <li>Architecture cloud résiliente</li>
+                            <li>Chiffrement des données (transit/repos)</li>
+                            <li>Autoscaling pour pics de charge</li>
+                            <li>Hébergement de modèles IA</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Google Cloud</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Sécurité Cloud</span>
+                        <span class="tech-tag">Fine-tuning</span>
+                        <span class="tech-tag">Autoscaling</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Synthèse technique</a>
+                        <a href="https://drive.google.com/uc?export=download&id=14zcyJJpVtWRaPxARalPbKuHmzHMrkdFe" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('Clinique de campagne.jpg'); background-size: cover; background-position: center;">
+                    <span class="project-badge">🗂️ System Architecture</span>
+                   <!-- badge encourt <span class="status-badge">En cours</span> -->
+                </div>
+                <div class="project-content">
+                    <h3>Clinique de campagne</h3>
+                    <p>Conception d'un système d'information médical sécurisé et conforme (RGPD)...</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Utilisation Principale (Pfsense / Virtualisation / Routage / ospf)</li>
+                            <li>Sécurité & chiffrement (Keycloak + 2FA, TLS1.3, AES-256)</li>
+                            <li>Conformité RGPD & gestion des droits</li>
+                            <li>Plan PRA, sauvegardes, disponibilité élevée</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Pfsense</span>
+                        <span class="tech-tag">Virtualisationt</span>
+                        <span class="tech-tag">Routage</span>
+                        <span class="tech-tag">Keycloak</span>
+                        <span class="tech-tag">ospf</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Synthèse technique</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1XNujgx1pquEZSUbOpy0AB5kcbNZsyLB8" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('Challenge RootMe  Compte rendu pentesting.jpg'); background-size: cover; background-position: center;">
+                    <span class="project-badge">🔍 Network and Security</span>
+                </div>
+                <div class="project-content">
+                    <h3>Concevoir, réaliser et présenter une solution technique</h3>
+                    <p>Recueil documenté de la conception et du déploiement de l’infrastructure réseau et système de WorldSkills Lyon 2025, avec méthodes, tests et analyses réflexives</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Routage OSPF + BGP et NAT Internet</li>
+                            <li>Haute disponibilité avec redondance des équipements clés</li>
+                            <li>Services AD/DNS, DHCP, mail, web, VPN virtualisés.</li>
+                            <li>Sécurité DMZ via pare‑feu et règles « deny by default </li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">VLAN · HSRP · OSPF · BGP</span>
+                        <span class="tech-tag">ESXi · Proxmox</span>
+                        <span class="tech-tag">DMZ · Firewall · OPNpsense </span>
+                        <span class="tech-tag">DHCP failover · VPN </span>
+                        <span class="tech-tag"> AD/DNS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="Chaker_Nabil_Projet_SAE501.pdf" class="project-link">Synthèse technique</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1SnRhqXIiPNCZz10rLDWELRjPCm8fypo6" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">Mon parcours de certification en réseau et cybersécurité pour développer une expertise reconnue dans le domaine.</p>
+
+        <h3 style="text-align: center; color: #00ff9d; margin-bottom: 2rem; margin-top: 3rem;">Objectifs Professionnels</h3>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-icon">🛡️</div>
+                <h4>Expert en Cybersécurité</h4>
+                <p>Devenir un expert en sécurité des systèmes d'information</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">🎯</div>
+                <h4>Spécialiste Pentesting</h4>
+                <p>Maîtriser les techniques avancées de tests d'intrusion</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-icon">☁️</div>
+                <h4>Cloud Security</h4>
+                <p>Sécuriser les infrastructures cloud et les architectures modernes</p>
+            </div>
+        </div>
+
+        <div class="certifications-grid">
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('CCNA Switching Routing Wireless.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="cert-date">📅 Fév 2025</div>
+                <div class="cert-status">Obtenue</div>
+                <h3>CCNA: Switching, Routing, and Wireless Essentials</h3>
+                <div class="cert-provider">🎓 Cisco Networking Academy</div>
+                <p>Maîtrise des concepts avancés de routage, switching et réseaux Wi-Fi.</p>
+                <a href="#" class="cert-link" onclick="openModal('CCNA Switching Routing Wireless', 'CCNA Switching Routing Wireless.jpg'); return false;">Voir détails</a>
+                <a href="CCNA.pdf" class="project-link">Ma certification</a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('introduction-aux-réseaux.png'); background-size: cover; background-position: center;"></div>
+                <div class="cert-date">📅 Juin 2024</div>
+                <div class="cert-status">Obtenue</div>
+                <h3>CCNAv7: Introduction aux réseaux</h3>
+                <div class="cert-provider">🎓 Cisco Networking Academy</div>
+                <p>Fondamentaux des réseaux, modèles OSI/TCP-IP, adressage IPv4/IPv6.</p>
+                <a href="#" class="cert-link" onclick="openModal('Introduction aux réseaux', 'introduction-aux-réseaux.png'); return false;">Voir détails</a>
+                
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('Introduction-cybersecurité.png'); background-size: cover; background-position: center;"></div>
+                <div class="cert-date">📅 Jan 2024</div>
+                <div class="cert-status">Obtenue</div>
+                <h3>Introduction to Cybersecurity</h3>
+                <div class="cert-provider">🎓 Cisco Networking Academy</div>
+                <p>Découverte des menaces, attaques, défenses et enjeux cyber.</p>
+                <a href="#" class="cert-link" onclick="openModal('Introduction to Cybersecurity', 'Introduction-cybersecurité.png'); return false;">Voir détails</a>
+                
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('network-essentials.png'); background-size: cover; background-position: center;"></div>
+                <div class="cert-date">📅 Jan 2024</div>
+                <div class="cert-status">Obtenue</div>
+                <h3>Networking Essentials</h3>
+                <div class="cert-provider">🎓 Cisco Networking Academy</div>
+                <p>Pratique réseau : topologies, VLAN, DHCP, câblage & configuration.</p>
+                <a href="#" class="cert-link" onclick="openModal('Networking Essentials', 'network-essentials.png'); return false;">Voir détails</a>
+                
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('Badge-compétence.png'); background-size: cover; background-position: center;"></div>
+                <div class="cert-date">📅 Novembre 2025</div>
+                <div class="cert-status">Obtenue</div>
+                <h3>Build a Secure Google Cloud Network</h3>
+                <div class="cert-provider">🎓 Google Cloud</div>
+                <p>Maîtrise des connexions cloud, sécurité réseaux</p>
+                <a href="#" class="cert-link" onclick="openModal('Badge-compétence', 'Badge-compétence.png'); return false;">Voir détails</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Intéressé par une collaboration ou souhaitez discuter de cybersécurité ? N'hésitez pas à me contacter !</p>
+
+        <div class="contact-grid">
+            <div>
+                <h3 style="color: #ffffff; margin-bottom: 1.5rem;">Retrouvez-moi sur</h3>
+                <div class="contact-methods">
+                    <a href="https://www.linkedin.com/in/nabil-chaker-4430b1327/" target="_blank" class="contact-method">
+                        <div class="contact-icon linkedin">💼</div>
+                        <div class="contact-info">
+                            <h4>LinkedIn</h4>
+                            <p>Connectons-nous professionnellement</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="contact-method">
+                        <div class="contact-icon github">💻</div>
+                        <div class="contact-info">
+                            <h4>GitHub</h4>
+                            <p>Découvrez mes projets open source</p>
+                        </div>
+                    </a>
+
+                    <a href="mailto:nchaker90@gmail.com" class="contact-method">
+                        <div class="contact-icon email">✉️</div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>Contactez-moi directement</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="color: #ffffff; margin-bottom: 1.5rem;">Informations</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">
+                            <h5>Localisation</h5>
+                            <p>France</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">💼</div>
+                        <div class="info-text">
+                            <h5>Disponibilité</h5>
+                            <p>Ouvert aux opportunités</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">⏱️</div>
+                        <div class="info-text">
+                            <h5>Réponse</h5>
+                            <p>Sous 24h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: #00ff9d; margin-bottom: 1rem;">Domaines d'intérêt</h4>
+                    <div class="domains">
+                        <span class="domain-tag">Cybersécurité</span>
+                        <span class="domain-tag">Pentesting</span>
+                        <span class="domain-tag">Cloud Security</span>
+                        <span class="domain-tag">IA & Sécurité</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box">
+            <h3>Prêt à collaborer ?</h3>
+            <p>Que ce soit pour un stage, une alternance ou bien même une opportunité, contactez-moi.</p>
+            <a href="mailto:nchaker90@gmail.com" class="message-button">
+                ✉️ Envoyez-moi un message
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <div class="shield-icon">🛡️</div>
+            <span style="color: #00ff9d;">Mon</span>Portfolio
+        </div>
+        <p>Étudiant BUT Réseaux & Télécommunications</p>
+    </footer>
+
+    <!-- Modal pour afficher les certifications -->
+    <div id="certModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Certification">
+            <div class="modal-title" id="modalTitle"></div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir la modal avec l'image de certification
+        function openModal(title, imagePath) {
+            const modal = document.getElementById('certModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalImage.src = imagePath;
+            modalTitle.textContent = title;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fonction pour fermer la modal
+        function closeModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .cert-card, .expertise-card, .goal-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlight
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
