@@ -86,7 +86,6 @@
             overflow: hidden;
         }
 
-        /* Animated background grid */
         .hero::before {
             content: '';
             position: absolute;
@@ -105,7 +104,6 @@
             100% { transform: translate(50px, 50px); }
         }
 
-        /* Floating orbs */
         .hero::after {
             content: '';
             position: absolute;
@@ -527,7 +525,7 @@
 
         .project-features h4 {
             color: #00ff9d;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
         }
 
@@ -535,14 +533,16 @@
             list-style: none;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
+            gap: 0.8rem;
+            row-gap: 0.8rem;
         }
 
         .project-features li {
             color: #d0d0d0;
             font-size: 0.85rem;
-            padding-left: 1.2rem;
+            padding-left: 1.5rem;
             position: relative;
+            line-height: 1.5;
         }
 
         .project-features li::before {
@@ -550,6 +550,7 @@
             position: absolute;
             left: 0;
             color: #00ff9d;
+            font-weight: bold;
         }
 
         .project-tech {
@@ -919,7 +920,7 @@
             }
         }
 
-        /* Modal/Lightbox pour les certifications */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -1046,6 +1047,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
+        <div class="orb-2"></div>
         <div class="nc-badge">
             <span>NC</span>
         </div>
@@ -1112,17 +1114,17 @@
                     <span class="project-badge">🛡️ Infrastructure Security</span>
                 </div>
                 <div class="project-content">
-                    <h3>Sécurisation d'un SI (SAÉ - Projet Universitaire )</h3>
+                    <h3>Sécurisation d'un SI (SAÉ - Projet Universitaire)</h3>
                     <p>Mise en place d'une infrastructure et d'un processus de sécurisation d'un système d'information (tests d'intrusion, segmentation réseau, surveillance) avec preuves d'exploitation et résultats de scans.</p>
                     <div class="project-features">
                         <h4>Fonctionnalités clés :</h4>
                         <ul>
-                            <li>Architecture réseau segmentée (LAN / DMZ / WAN) et plan IP détaillé.</li>
-                            <li>Tests d'intrusion / pentests : captures Wi-Fi (WEP/WPA), scans Nuxus, Nmap, Zenmap.</li>
-                            <li>Déploiement et configuration de pare-feu (Stormshield) et règles de filtrage.</li>
-                            <li>Gestion des accès : intégration AD / SSO et contrôle d'objets de groupe.</li>
-                            <li>Collecte de logs & forensic (captures handshake, sorties d'outils) pour traçabilité.</li>
-                            <li>Recommandations d'amélioration et priorisation des corrections.</li>
+                            <li>Architecture réseau segmentée (LAN / DMZ / WAN) et plan IP détaillé</li>
+                            <li>Tests d'intrusion / pentests : captures Wi-Fi (WEP/WPA), scans Nuxus, Nmap, Zenmap</li>
+                            <li>Déploiement et configuration de pare-feu (Stormshield) et règles de filtrage</li>
+                            <li>Gestion des accès : intégration AD / SSO et contrôle d'objets de groupe</li>
+                            <li>Collecte de logs & forensic (captures handshake, sorties d'outils) pour traçabilité</li>
+                            <li>Recommandations d'amélioration et priorisation des corrections</li>
                         </ul>
                     </div>
                     <div class="project-tech">
@@ -1133,7 +1135,6 @@
                         <span class="tech-tag">Active Directory</span>
                     </div>
                     <div class="project-links">
-                       <!--  <a href="#" class="project-link">Synthèse technique</a> -->
                         <a href="CHAKER_Nabil_SA41_Cahier_des_charges.pdf" class="project-link primary">Télécharger le projet</a>
                     </div>
                 </div>
@@ -1167,7 +1168,6 @@
                         <span class="tech-tag">Autoscaling</span>
                     </div>
                     <div class="project-links">
-                      <!--  <a href="#" class="project-link">Synthèse technique</a>  -->
                         <a href="https://drive.google.com/uc?export=download&id=14zcyJJpVtWRaPxARalPbKuHmzHMrkdFe" class="project-link primary">Télécharger le projet</a>
                     </div>
                 </div>
@@ -1177,15 +1177,14 @@
             <div class="project-card">
                 <div class="project-image" style="background-image: url('Clinique de campagne.jpg'); background-size: cover; background-position: center;">
                     <span class="project-badge">🗂️ System Architecture</span>
-                   <!-- badge encourt <span class="status-badge">En cours</span> -->
                 </div>
                 <div class="project-content">
-                    <h3>Clinique de campagne (SAÉ - Projet Universitaire )</h3>
-                    <p>Conception d'un système d'information médical sécurisé et conforme (RGPD)...</p>
+                    <h3>Clinique de campagne (SAÉ - Projet Universitaire)</h3>
+                    <p>Conception d'un système d'information médical sécurisé et conforme (RGPD).</p>
                     <div class="project-features">
                         <h4>Fonctionnalités clés :</h4>
                         <ul>
-                            <li>Utilisation Principale (Pfsense / Virtualisation / Routage / ospf)</li>
+                            <li>Utilisation Principale (Pfsense / Virtualisation / Routage / OSPF)</li>
                             <li>Sécurité & chiffrement (Keycloak + 2FA, TLS1.3, AES-256)</li>
                             <li>Conformité RGPD & gestion des droits</li>
                             <li>Plan PRA, sauvegardes, disponibilité élevée</li>
@@ -1193,13 +1192,12 @@
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">Pfsense</span>
-                        <span class="tech-tag">Virtualisationt</span>
+                        <span class="tech-tag">Virtualisation</span>
                         <span class="tech-tag">Routage</span>
                         <span class="tech-tag">Keycloak</span>
-                        <span class="tech-tag">ospf</span>
+                        <span class="tech-tag">OSPF</span>
                     </div>
                     <div class="project-links">
-                     <!--   <a href="#" class="project-link">Synthèse technique</a> -->
                         <a href="https://drive.google.com/uc?export=download&id=1lk6AlHfwd79z_g9ttLGeJqJGD0Q7W4ic" class="project-link primary">Télécharger le projet</a>
                     </div>
                 </div>
@@ -1211,27 +1209,58 @@
                     <span class="project-badge">🔍 Network and Security</span>
                 </div>
                 <div class="project-content">
-                    <h3>Concevoir, réaliser et présenter une solution technique (SAÉ - Projet Universitaire ) </h3>
-                    <p>Recueil documenté de la conception et du déploiement de l’infrastructure réseau et système de WorldSkills Lyon 2025, avec méthodes, tests et analyses réflexives</p>
+                    <h3>Concevoir, réaliser et présenter une solution technique (SAÉ - Projet Universitaire)</h3>
+                    <p>Recueil documenté de la conception et du déploiement de l'infrastructure réseau et système de WorldSkills Lyon 2025, avec méthodes, tests et analyses réflexives.</p>
                     <div class="project-features">
                         <h4>Fonctionnalités clés :</h4>
                         <ul>
                             <li>Routage OSPF + BGP et NAT Internet</li>
                             <li>Haute disponibilité avec redondance des équipements clés</li>
-                            <li>Services AD/DNS, DHCP, mail, web, VPN virtualisés.</li>
-                            <li>Sécurité DMZ via pare‑feu et règles « deny by default </li>
+                            <li>Services AD/DNS, DHCP, mail, web, VPN virtualisés</li>
+                            <li>Sécurité DMZ via pare‑feu et règles « deny by default »</li>
                         </ul>
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">VLAN · HSRP · OSPF · BGP</span>
                         <span class="tech-tag">ESXi · Proxmox</span>
-                        <span class="tech-tag">DMZ · Firewall · OPNpsense </span>
-                        <span class="tech-tag">DHCP failover · VPN </span>
-                        <span class="tech-tag"> AD/DNS</span>
+                        <span class="tech-tag">DMZ · Firewall · OPNsense</span>
+                        <span class="tech-tag">DHCP failover · VPN</span>
+                        <span class="tech-tag">AD/DNS</span>
                     </div>
                     <div class="project-links">
-                       <a href="Chaker_Nabil_Projet_SAE501.pdf" class="project-link">Synthèse technique</a>  
+                        <a href="Chaker_Nabil_Projet_SAE501.pdf" class="project-link">Synthèse technique</a>  
                         <a href="https://drive.google.com/uc?export=download&id=1SnRhqXIiPNCZz10rLDWELRjPCm8fypo6" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);">
+                    <span class="project-badge">🚩 CTF Challenge</span>
+                </div>
+                <div class="project-content">
+                    <h3>Je crée mon premier CTF</h3>
+                    <p>Conception d'un Capture The Flag (CTF) personnalisé pour développer mes compétences en cybersécurité de manière pratique et ludique.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Challenges de cryptographie et stéganographie</li>
+                            <li>Exploitation de vulnérabilités web</li>
+                            <li>Analyse forensique et reverse engineering</li>
+                            <li>Système de scoring et validation des flags</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Codage</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Web Security</span>
+                        <span class="tech-tag">Cryptographie</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="ctf.html" class="project-link">Mon CTF</a>  
+                        <a href="CHAKER_Nabil_Creation_de_CTF.pdf" class="project-link primary">Fiche explicative de mon CTF</a>
+                        <a href="Microlearning_Stéganographie.mp4" class="project-link primary">Video d'explication du ctf</a>
                     </div>
                 </div>
             </div>
@@ -1282,7 +1311,6 @@
                 <div class="cert-provider">🎓 Cisco Networking Academy</div>
                 <p>Fondamentaux des réseaux, modèles OSI/TCP-IP, adressage IPv4/IPv6.</p>
                 <a href="#" class="cert-link" onclick="openModal('Introduction aux réseaux', 'introduction-aux-réseaux.png'); return false;">Voir détails</a>
-                
             </div>
 
             <div class="cert-card">
@@ -1293,7 +1321,6 @@
                 <div class="cert-provider">🎓 Cisco Networking Academy</div>
                 <p>Découverte des menaces, attaques, défenses et enjeux cyber.</p>
                 <a href="#" class="cert-link" onclick="openModal('Introduction to Cybersecurity', 'Introduction-cybersecurité.png'); return false;">Voir détails</a>
-                
             </div>
 
             <div class="cert-card">
@@ -1304,7 +1331,6 @@
                 <div class="cert-provider">🎓 Cisco Networking Academy</div>
                 <p>Pratique réseau : topologies, VLAN, DHCP, câblage & configuration.</p>
                 <a href="#" class="cert-link" onclick="openModal('Networking Essentials', 'network-essentials.png'); return false;">Voir détails</a>
-                
             </div>
 
             <div class="cert-card">
@@ -1313,9 +1339,8 @@
                 <div class="cert-status">Obtenue</div>
                 <h3>Build a Secure Google Cloud Network</h3>
                 <div class="cert-provider">🎓 Google Cloud</div>
-                <p>Maîtrise des connexions cloud, sécurité réseaux</p>
+                <p>Maîtrise des connexions cloud, sécurité réseaux.</p>
                 <a href="#" class="cert-link" onclick="openModal('Badge-compétence', 'Badge-compétence.png'); return false;">Voir détails</a>
-                
             </div>
         </div>
     </section>
@@ -1413,7 +1438,7 @@
         <p>Étudiant BUT Réseaux & Télécommunications</p>
     </footer>
 
-    <!-- Modal pour afficher les certifications -->
+    <!-- Modal -->
     <div id="certModal" class="modal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -1423,7 +1448,6 @@
     </div>
 
     <script>
-        // Fonction pour ouvrir la modal avec l'image de certification
         function openModal(title, imagePath) {
             const modal = document.getElementById('certModal');
             const modalImage = document.getElementById('modalImage');
@@ -1435,21 +1459,18 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Fonction pour fermer la modal
         function closeModal() {
             const modal = document.getElementById('certModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        // Fermer avec la touche Échap
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1463,7 +1484,6 @@
             });
         });
 
-        // Fade in animations on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -1481,7 +1501,6 @@
             observer.observe(el);
         });
 
-        // Active navigation highlight
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section');
