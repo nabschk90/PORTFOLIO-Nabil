@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CTF – Stéganographie QR Codes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #0b0f14;
+            color: #e5e7eb;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 1px solid #1f2933;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #38bdf8;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .qr-card {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.08);
+        }
+
+        .qr-card h2 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #a5f3fc;
+        }
+
+        .qr-card img {
+            width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 0.5rem;
+        }
+
+        .qr-card a {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            color: #0b0f14;
+            background-color: #38bdf8;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .qr-card a:hover {
+            background-color: #0ea5e9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #6b7280;
+            font-size: 0.8rem;
+            border-top: 1px solid #1f2933;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CTF – Stéganographie</h1>
+    <p>Analyse les QR codes et découvre les informations cachées.</p>
+</header>
+
+<main>
+    <!-- QR Code gauche -->
+    <div class="qr-card">
+        <h2>QR Code #1</h2>
+        <img src="qrcode_steganographie.png" alt="QR Code 1">
+        <a href="qrcode_steganographie.png" download>Télécharger</a>
+    </div>
+
+    
+    <div class="qr-card">
+        <h2>QR Code #2</h2>
+        <img src="qrcode_AES.png" alt="QR Code 2">
+        <a href="qrcode_AES.png" download>Télécharger</a>
+    </div>
+</main>
+
+<section style="text-align:center; padding-bottom:3rem;">
+    <h2 style="color:#a5f3fc;">Valide t'on flag</h2>
+    <p style="color:#9ca3af;">Si tu as trouvé le flag, mets-le mais moi je pense que tu t'es raté.</p>
+    <input id="flagInput" type="text" placeholder="Mot de passe" 
+           style="padding:0.6rem; width:260px; border-radius:6px; border:1px solid #1e293b; background:#020617; color:#e5e7eb;">
+    <br><br>
+    <button onclick="checkFlag()"
+            style="padding:0.6rem 1.4rem; font-weight:bold; border:none; border-radius:6px; background:#22c55e; color:#020617; cursor:pointer;">
+        Valider
+    </button>
+</section>
+
+<script>
+    function checkFlag() {
+        const input = document.getElementById('flagInput').value;
+        const correctFlag = "QRcrack-RT2026";
+
+        if (input === correctFlag) {
+            alert("Flag trouvé ! Bravo");
+        } else {
+            alert(" Mauvais mot de passe, réessaie.");
+        }
+    }
+</script>
+
+
+<footer>
+    Regarde pas le code source y'as rien
+</footer>
+
+</body>
+</html>
