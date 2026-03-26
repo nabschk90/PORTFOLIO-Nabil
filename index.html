@@ -997,36 +997,40 @@
             font-size: 1.2rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .expertise-grid, .goals-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 4rem 5%;
-            }
-            
-            .project-links {
-                flex-direction: column;
-            }
-        }
+/* ===== PASTILLE "EN COURS DE TRAVAIL" ===== */
+.wip-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #ff8c00, #ff4500);
+    color: #fff;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 15px rgba(255, 100, 0, 0.55);
+    animation: wipGlow 2s ease-in-out infinite;
+    z-index: 2;
+}
+.wip-dot {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dotBlink 1.1s ease-in-out infinite;
+}
+@keyframes wipGlow {
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 100, 0, 0.55); }
+    50%       { box-shadow: 0 4px 28px rgba(255, 100, 0, 0.9); }
+}
+@keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.35; transform: scale(0.65); }
+} 
     </style>
 </head>
 <body>
@@ -1034,7 +1038,7 @@
     <nav>
         <div class="logo">
             <div class="shield-icon">🛡️</div>
-            <span>Mon</span>Portfolio - Nabil CHAKER
+            <span>Mon</span>Portfolio - Chaker Nabil
         </div>
         <ul>
             <li><a href="#accueil">Accueil</a></li>
@@ -1179,7 +1183,7 @@
                     <span class="project-badge">🗂️ System Architecture</span>
                 </div>
                 <div class="project-content">
-                    <h3>Clinique de campagne (SAÉ502 - Projet Universitaire)</h3>
+                    <h3>Clinique de campagne (SAÉ - Projet Universitaire)</h3>
                     <p>Conception d'un système d'information médical sécurisé et conforme (RGPD).</p>
                     <div class="project-features">
                         <h4>Fonctionnalités clés :</h4>
@@ -1209,7 +1213,7 @@
                     <span class="project-badge">🔍 Network and Security</span>
                 </div>
                 <div class="project-content">
-                    <h3>Concevoir, réaliser et présenter une solution technique (SAÉ501 - Projet Universitaire)</h3>
+                    <h3>Concevoir, réaliser et présenter une solution technique (SAÉ - Projet Universitaire)</h3>
                     <p>Recueil documenté de la conception et du déploiement de l'infrastructure réseau et système de WorldSkills Lyon 2025, avec méthodes, tests et analyses réflexives.</p>
                     <div class="project-features">
                         <h4>Fonctionnalités clés :</h4>
@@ -1236,7 +1240,7 @@
 
             <!-- Projet 5 -->
             <div class="project-card">
-                <div class="project-image" style="background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);">
+                <div class="project-image" style="background-image: url('CTF.jpg'); background-size: cover; background-position: center;">
                     <span class="project-badge">🚩 CTF Challenge</span>
                 </div>
                 <div class="project-content">
@@ -1260,11 +1264,129 @@
                     <div class="project-links">
                         <a href="ctf.html" class="project-link">Mon CTF</a>  
                         <a href="CHAKER_Nabil_Creation_de_CTF.pdf" class="project-link primary">Fiche explicative de mon CTF</a>
-                        <a href="https://www.youtube.com/watch?v=SM_sp2IE6Ek" class="project-link primary">Video d'explication du ctf</a>
+                         <a href="https://www.youtube.com/watch?v=SM_sp2IE6Ek" class="project-link primary">Video d'explication du ctf</a>
                     </div>
                 </div>
             </div>
+
+
+                                <!-- Projet 6 -->
+<div class="project-card">
+    <div class="project-image" style="background-image: url('IA_LLM.jpg'); background-size: cover; background-position: center;">
+        <span class="project-badge">Infrastructure IA local</span>
+        <span class="wip-badge"><span class="wip-dot"></span>En cours de travail</span>
+    </div>
+
+    <div class="project-content">
+        <h3>Projet Personnel - Application IA Locale (DeepSeek)</h3>
+        <p>Le projet met en place une architecture complète (frontend, backend, moteur IA) pour offrir un assistant intelligent hors ligne pour mon usage personelle, sécurisé et personnalisable.</p>
+
+        <div class="project-features">
+            <h4>Fonctionnalités clés :</h4>
+            <ul>
+                <li>Exécution d’un modèle LLM DeepSeek en local via Ollama, sans connexion internet</li>
+                <li>Application multiplateforme développée avec Electron (HTML / CSS / JavaScript)</li>
+                <li>API REST avec FastAPI pour gérer la communication entre UI et moteur IA</li>
+                <li>Stockage local des historiques via SQLite pour traçabilité et continuité</li>
+                <li>Séparation claire (Frontend / Backend / IA) permettant l’évolution et l’ajout de modèles</li>
+                <li>Recommandations d'amélioration et priorisation des corrections</li>
+                <li>Aucune donnée envoyée sur des serveurs externes, traitement 100% local</li>
+            </ul>
         </div>
+
+        <div class="project-tech">
+            <span class="tech-tag">Codage</span>
+            <span class="tech-tag">LLM</span>
+            <span class="tech-tag">SQLite</span>
+            <span class="tech-tag">Python</span>
+        </div>
+
+        <div class="project-links">
+            <a href="CHAKER_Nabil_Projet_Personel_IA.pdf" class="project-link">Synthèse technique</a>
+            <a href="#" class="project-link primary">Le rapport final sera mis quand le projet sera fini</a> 
+        </div>
+    </div>
+</div>
+
+
+            <!-- Projet 7 -->
+                                
+               <div class="project-card">
+            <div class="project-image" style="background-image: url('Locked.jpg'); background-size: cover; background-position: center;">
+                     <span class="project-badge">🛡️ Infrastructure Security</span>
+                     <span class="wip-badge"><span class="wip-dot"></span>En cours de travail</span>
+            </div>
+
+                <div class="project-content">
+                    <h3>STAGE Femto-ST - Système d’Alerte VPS</h3>
+                    <p>Mise en place d’un outil de supervision permettant de détecter les dégradations de performance sur des serveurs VPS (Ubuntu) et d’alerter automatiquement les utilisateurs.
+                    Le système analyse l’état de la machine et propose des procédures de remédiation afin de rétablir son bon fonctionnement.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Détection des facteurs impactant les VPS (CPU, RAM, stockage, services, logs)</li>
+                            <li>Scan automatisé des machines pour repérer les problèmes de performance</li>
+                            <li>Génération de recommandations pour restaurer l’état de santé du VPS</li>
+                            <li>Envoi de notifications par email en cas de dégradation détectée</li>
+                            <li>Séparation claire (Frontend / Backend / IA) permettant l’évolution et l’ajout de modèles</li>
+                            <li>Monitoring régulier pour anticiper les incidents et maintenir la stabilité</li>
+                            <li>Solution pensée pour les plateformes pédagogiques (Dept MMI / M2I)</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">Linux (Ubuntu VPS)</span>
+                        <span class="tech-tag">Python / Bash (scripts de monitoring)</span>
+                        <span class="tech-tag">Agent snmp</span>
+                        <span class="tech-tag">Python / node.js</span>
+                    </div>
+
+                <div class="project-links">
+                        <a href="synthèse_stage_Femto-st.pdf" class="project-link">Synthèse technique</a>
+                        <a href="#" class="project-link primary">Le rapport final sera mis quand le projet sera fini</a> 
+                    </div>
+                    </div>
+                </div>
+
+                                <!-- Projet 8 -->
+           <div class="project-card">
+            <div class="project-image" style="background-image: url('Systeme-locked.png'); background-size: cover; background-position: center;">
+                     <span class="project-badge">🛡️ Infrastructure Security</span>
+            </div>
+
+                <div class="project-content">
+                    <h3>Projet Universitaire — Pentesting (SAE 3.04)</h3>
+                    <p>Réalisation d’une série de défis de cybersécurité orientés pentesting, couvrant plusieurs domaines : web, système, forensic et programmation.
+                        Le projet consiste à identifier, exploiter et comprendre des vulnérabilités réelles, tout en développant une méthodologie d’analyse et d’attaque.</p>
+                    <div class="project-features">
+                        <h4>Fonctionnalités clés :</h4>
+                        <ul>
+                            <li>Exploitation de vulnérabilités : NoSQL, LDAP, XSS, CSRF, Directory Traversal</li>
+                            <li>Contournement d’authentification et récupération de données sensibles</li>
+                            <li>Injection XSS, vol de cookies, manipulation de requêtes HTTP</li>
+                            <li>Stockage local des historiques via SQLite pour traçabilité et continuité</li>
+                            <li>Investigation de dump mémoire avec Volatility (Command & Control)</li>
+                            <li>Recommandations d'amélioration et priorisation des corrections</li>
+                            <li>Escalade de privilèges via scripts Bash et manipulation de variables d’environnement</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">Kali Linux</span>
+                        <span class="tech-tag">Burp Suite</span>
+                        <span class="tech-tag">Volatility</span>
+                        <span class="tech-tag">HTTP / Web technologies</span>
+                        <span class="tech-tag">Injection SQL</span>
+                    </div>
+
+                <div class="project-links">
+                       <!-- <a href="CHAKER_Nabil_Projet_Personel_IA.pdf" class="project-link">Synthèse technique</a> -->
+                        <a href="CHAKER_Rapport_Root_Me.pdf" class="project-link primary">Télécharger le projet</a>
+                    </div>
+                    </div>
+                </div>
+
+                
     </section>
 
     <!-- Certifications Section -->
